@@ -1,14 +1,25 @@
 from fastapi import FastAPI
 
-from app.api import incidents as incidents_router
-from app.core.config import settings
+# Import existing routers
+from app.api.incidents import router as incidents_router
+# Import the new tasks router (based on Step 22 path)
+from app.api.tasks import router as tasks_router 
 
+app = FastAPI(
+    title="Field Evidence Platform",
+    version="0.1.0",
+)
 
-app = FastAPI(title=settings.app_name, version="0.1.0")
+# Register incidents router
+app.include_router(
+    incidents_router,
+    prefix="/api/v1",
+)
 
-app.include_router(incidents_router.router, prefix="/api/v1")
+# Register tasks router
+app.include_router(
+    tasks_router,
+    prefix="/api/v1",
+)
 
-
-@app.get("/health")
-def health_check() -> dict[str, str]:
-    return {"status": "ok", "service": settings.app_name}
+# (Keep your existing /health endpoint and any other configuration below)
