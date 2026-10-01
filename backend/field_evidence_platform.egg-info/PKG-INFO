@@ -1,0 +1,18 @@
+Metadata-Version: 2.4
+Name: field-evidence-platform
+Version: 0.1.0
+Summary: Incident evidence marketplace backend
+Requires-Python: >=3.12
+Requires-Dist: fastapi
+Requires-Dist: uvicorn[standard]
+Requires-Dist: pydantic-settings
+Provides-Extra: db
+Requires-Dist: sqlalchemy; extra == "db"
+Requires-Dist: alembic; extra == "db"
+Requires-Dist: psycopg[binary]; extra == "db"
+Requires-Dist: geoalchemy2; extra == "db"
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: httpx; extra == "dev"
+Requires-Dist: ruff; extra == "dev"
+Requires-Dist: mypy; extra == "dev"
